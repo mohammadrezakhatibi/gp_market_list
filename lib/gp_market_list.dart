@@ -31,7 +31,7 @@ class MarketListState extends State<MarketListWidget>
         Container(
           margin: const EdgeInsets.all(16),
           height: 32,
-          alignment: Alignment.centerLeft,
+          alignment: Localizations.localeOf(context).languageCode == "ar" ? Alignment.topRight : Alignment.topLeft,
           child: TabBar(
             overlayColor:
                 MaterialStateColor.resolveWith((states) => Colors.transparent),

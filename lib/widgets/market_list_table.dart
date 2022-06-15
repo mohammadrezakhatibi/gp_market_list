@@ -11,7 +11,15 @@ class MarketListTableWidget extends StatefulWidget {
   final Widget? header;
   final Widget? footer;
   final MarketCellConfiguration configuration;
-  const MarketListTableWidget({Key? key, required this.items, this.header, this.footer, required this.configuration}) : super(key: key);
+
+  const MarketListTableWidget(
+      {Key? key,
+      required this.items,
+      this.header,
+      this.footer,
+      required this.configuration})
+      : super(key: key);
+
   // const MarketListTableWidget(
   //     {Key? key, required this.items, this.header, this.footer, this.configuration })
   //     : super(key: key);
@@ -61,7 +69,9 @@ class MarketListTableState extends State<MarketListTableWidget> {
             Row(
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(right: 8),
+                  padding: Localizations.localeOf(context).languageCode == "ar"
+                      ? const EdgeInsets.only(left: 8)
+                      : const EdgeInsets.only(right: 8),
                   child: SizedBox(
                     width: 24,
                     height: 24,
@@ -93,7 +103,8 @@ class MarketListTableState extends State<MarketListTableWidget> {
                 Text(
                   market.lastPrice.toString(),
                   style: TextStyle(
-                      color: MarketState.statusColor(market.status, widget.configuration),
+                      color: MarketState.statusColor(
+                          market.status, widget.configuration),
                       fontWeight: FontWeight.normal),
                 ),
                 const Spacer(),
@@ -102,7 +113,8 @@ class MarketListTableState extends State<MarketListTableWidget> {
                     borderRadius: const BorderRadius.all(
                       Radius.circular(5),
                     ),
-                    color: MarketState.statusColor(market.status, widget.configuration),
+                    color: MarketState.statusColor(
+                        market.status, widget.configuration),
                   ),
                   padding: const EdgeInsets.fromLTRB(24, 6, 24, 6),
                   child: Text(
